@@ -1,8 +1,5 @@
-import "./styles.css"
+import "./styles.css";
+import "./initLoad.js"
+import {initLoad} from "./initLoad.js"
 
-import stockRestImage from "./images/stockRestPhoto.jpg";
-
-const image = document.createElement("img");
-image.src = stockRestImage;
-
-document.getElementById("content").appendChild(image);
+initLoad();

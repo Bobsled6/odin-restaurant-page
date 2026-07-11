@@ -6,9 +6,9 @@ const toppings = {
     pizzaSauce: ["Traditional", "Ranch", "Buffalo", "BBQ"],
     wingFlavors: ["Hot Buffalo", "Mild Buffalo", "BBQ", "Honey BBQ", "Lemon Pepper", "Teriyaki"],
     wingSauce: ["Ranch", "Blue Cheese"],
-    burgerToppings: ["Bacon", "Lettuce", "Tomato", "Onion", "Pickle"],
+    burgerToppings: ["Lettuce", "Tomato", "Onion", "Pickle"],
     cheeseTypes: ["Provolone", "American", "Cheddar", "Pepper Jack"],
-    condiments: ["Ketchup", "Mustard", "Mayonnaise", "Relish", "Hot Sauce", "BBQ Sauce", "Melted Cheddar"],
+    condiments: ["Ketchup", "Mustard", "Mayonnaise", "Relish", "Onion", "Hot Sauce", "BBQ Sauce", "Melted Cheddar"],
 };
         
 class menuItem {
@@ -73,10 +73,8 @@ class menuCategory {
        content.appendChild(menuCat);
 
     }
-}
 
-class subCat {
-    constructor(name, parentCat) {
+    static subCat(name, parentCat){
         const parentCatDiv = document.getElementById(parentCat);
         const subDiv = document.createElement("div");
         const subHeader = document.createElement("h3");
@@ -86,9 +84,10 @@ class subCat {
         subHeader.innerHTML = name;
         subDiv.appendChild(subHeader);
         parentCatDiv.appendChild(subDiv);
-
     }
-};
+}
+
+
 
 export function menu() {
     
@@ -103,22 +102,50 @@ export function menu() {
     new menuCategory("Pizza", "pizzaToppings","Available in slices (Cheese or Pepperoni), Small(12 in.), or Large(18 in.). Extra toppings $1.00 each");
     
     new menuCategory("Wings", "wingFlavors", "Available in bone-in or boneless, served with side of celery and choice of ranch or blue cheese dipping sauce");
-    new menuCategory("Burgers", "burgerToppings", "Served with choice of toppings and condiments on a brioche bun");
-    new menuCategory("French Fries", "null", "Salted Crispy Thin cut French Fries, available in regular or family sized portion");
-    new menuCategory("Hot Dog", "null", "Grilled Hot Dogs available in standard or foot long size, served with choice of condiments");
-    new menuCategory("Snacks and Treats", "null", "Tasty snacks when you just need a bite to make it through")
+    new menuCategory("Burgers", "burgerToppings", "Served with choice of toppings and condiments on a brioche bun. Make it a double for $4.00 more");
+    new menuCategory("French Fries", "null", "Salted Crispy Thin cut French Fries, available in regular or family sized portions");
+    new menuCategory("Hot Dogs", "null", "Grilled Hot Dogs available in standard or foot long size, served with choice of condiments");
+    new menuCategory("Snacks and Treats", "null", "Tasty snacks when you just need a bite to make it through");
+    new menuCategory("Beverages","null","");
     new menuCategory("Condiments", "condiments", "Free with purchase, Melted Cheddar limited to 1 serving per customer");
 
-    new subCat("Classic Bone-In", "Wings");
+    menuCategory.subCat("Classic Bone-In", "Wings");
+    menuCategory.subCat("Boneless", "Wings");
 
-    new menuItem("Slice","2", "Pizza")
-    new menuItem("Small", "10", "Pizza")
-    new menuItem("Large","15", "Pizza")
+    new menuItem("Slice","2", "Pizza");
+    new menuItem("Small", "10", "Pizza");
+    new menuItem("Large","15", "Pizza");
 
-    new menuItem("6 Ct","12", "Classic Bone-In")
-    new menuItem("12 Ct", "21", "Classic Bone-In" )
+    new menuItem("6 Ct","12", "Classic Bone-In");
+    new menuItem("12 Ct", "21", "Classic Bone-In");
+    new menuItem("20 Ct.", "30", "Classic Bone-In");
+
+    new menuItem("6 Ct","9", "Boneless");
+    new menuItem("12 Ct", "16", "Boneless");
+    new menuItem("20 Ct.", "23", "Boneless");
     
-    
+    new menuItem("Hamburger", "7","Burgers");
+    new menuItem("Cheeseburger", "8", "Burgers");
+    new menuItem("Bacon Hamburger", "9", "Burgers");
+    new menuItem("Bacon Cheeseburger", "10","Burgers")
+
+    new menuItem("Regular","5","French Fries");
+    new menuItem("Family-Sized", "12", "French Fries");
+
+    new menuItem("Regular", "6", "Hot Dogs");
+    new menuItem("Chili Dog", "7", "Hot Dogs");
+    new menuItem("Footlong", "8", "Hot Dogs");
+    new menuItem("Footlong Chili", "9", "Hot Dogs");
+
+    new menuItem("Cup of Boiled Peanuts", "3", "Snacks and Treats");
+    new menuItem("Bag of Cracker Jack", "4", "Snacks and Treats");
+    new menuItem("Salted Soft Pretzel", "3", "Snacks and Treats");
+    new menuItem("Nachos w/ Cheese", "5", "Snacks and Treats");
+
+    new menuItem("Water", "0", "Beverages");
+    new menuItem("Soda", "2", "Beverages");
+    new menuItem("Beer", "4", "Beverages");
+    new menuItem("Mixed Drinks", "6", "Beverages");
 
     
 

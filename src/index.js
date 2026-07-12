@@ -7,7 +7,9 @@ const homeButton = document.getElementById("home");
 const menuButton = document.getElementById("menu");
 const aboutButton = document.getElementById("about");
 
-initLoad();
+// initLoad();
+
+menu()
 
 homeButton.addEventListener("click", () => {
     content.replaceChildren();

@@ -1,11 +1,39 @@
 const content = document.getElementById("content");
+import Pizza from "./images/Pizza.jpg";
+import Wings from "./images/Wings.jpg";
+import Burgers from "./images/Burgers.jpg";
+import Condiments from "./images/Condiments.jpg";
+import Beverages from "./images/Beverages.jpg";
+import FrenchFries from "./images/FrenchFries.jpg";
+import HotDogs from "./images/HotDogs.jpg";
+import SnacksAndTreats from "./images/SnacksAndTreats.jpg";
+
 
 
 const toppings = {
     pizzaToppings: ["Pepperoni", "Ham", "Sausage", "Broccoli", "Green Pepper", "Red Pepper", "Banana Pepper", "Jalapeno Pepper", "Red Pepper","Green Olives", "Black Olives", "Onion", "Mushroom"],
     wingFlavors: ["Hot Buffalo", "Mild Buffalo", "BBQ", "Honey BBQ", "Lemon Pepper", "Teriyaki"],
     burgerToppings: ["Lettuce", "Tomato", "Onion", "Pickle"],
-    condiments: ["Ketchup", "Mustard", "Mayonnaise", "Relish", "Onion", "Hot Sauce", "BBQ Sauce", "Melted Cheddar"],
+    condiments: ["Ketchup", "Mustard", "Honey Mustard", "Mayonnaise", "Relish", "Onion", "Hot Sauce", "BBQ Sauce", "Salsa", "Melted Cheddar"],
+};
+
+const images = {
+    Pizza: [Pizza],
+    PizzaSrc: ["Alan Hardman unsplash.com/@alanakition"],
+    Wings: [Wings],
+    WingsSrc:["Chad Montano unsplash.com/@briewilly"],
+    Burgers: [Burgers],
+    BurgersSrc:["Adam Bartoszewicz unsplash.com/@bartoshevicz"],
+    FrenchFries:[FrenchFries],
+    FrenchFriesSrc:["Jay unsplash.com/@ja024"],
+    HotDogs:[HotDogs],
+    HotDogsSrc:["Ball Park Brand unsplash.com/@ballparkbrand"],
+    SnacksandTreats:[SnacksAndTreats],
+    SnacksandTreatsSrc:["David Todd McCarty unsplash.com/@davidtoddmccarty"],
+    Beverages:[Beverages],
+    BeveragesSrc:["Giorgio Trovato unsplash.com/@giorgiotrovato"],
+    Condiments:[Condiments],
+    CondimentsSrc:["Max Tokarev unsplash.com/@matokarev"],
 };
         
 class menuItem {
@@ -43,6 +71,8 @@ class menuItem {
 class menuCategory {
 
     constructor(name,toppingsCat, description) {
+        let nameString = name.toString();
+        nameString = nameString.replaceAll(' ', '');
 
         const descriptionP = document.createElement("p");
         descriptionP.classList.add("description");
@@ -65,9 +95,19 @@ class menuCategory {
             })
         
         }
+
+        const imageFigure = document.createElement("figure");
+        const catImage = document.createElement("img");
+        const catImageSrc = document.createElement("figcaption");
+
+        catImage.src = images[nameString];
+        catImageSrc.innerHTML = images[nameString + 'Src'];
+        imageFigure.appendChild(catImage);
+        imageFigure.appendChild(catImageSrc);
+        menuCat.appendChild(imageFigure);
     
-       menuCat.appendChild(descriptionP);
-       content.appendChild(menuCat);
+        menuCat.appendChild(descriptionP);
+        content.appendChild(menuCat);
 
     }
 
@@ -137,9 +177,10 @@ export function menu() {
     new menuItem("Cup of Boiled Peanuts", "3", "Snacks and Treats");
     new menuItem("Bag of Cracker Jack", "4", "Snacks and Treats");
     new menuItem("Salted Soft Pretzel", "3", "Snacks and Treats");
-    new menuItem("Nachos w/ Cheese", "5", "Snacks and Treats");
+    new menuItem("Nachos w/ Cheese or Salsa", "5", "Snacks and Treats");
+    new menuItem("Beef Nachos w/ Cheese or Salsa", "6", "Snacks and Treats");
 
-    new menuItem("Water", "0", "Beverages");
+    new menuItem("Ice Water w/ optional Lemon", "0", "Beverages");
     new menuItem("Soda", "2", "Beverages");
     new menuItem("Beer", "4", "Beverages");
     new menuItem("Mixed Drinks", "6", "Beverages");

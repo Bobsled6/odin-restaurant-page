@@ -2,12 +2,9 @@ const content = document.getElementById("content");
 
 
 const toppings = {
-    pizzaToppings: ["Pepperoni", "Ham", "Sausage", "Chicken", "Broccoli", "Green Pepper", "Red Pepper", "Banana Pepper", "Jalapeno Pepper", "Red Pepper","Green Olives", "Black Olives", "Onion", "Mushroom"],
-    pizzaSauce: ["Traditional", "Ranch", "Buffalo", "BBQ"],
+    pizzaToppings: ["Pepperoni", "Ham", "Sausage", "Broccoli", "Green Pepper", "Red Pepper", "Banana Pepper", "Jalapeno Pepper", "Red Pepper","Green Olives", "Black Olives", "Onion", "Mushroom"],
     wingFlavors: ["Hot Buffalo", "Mild Buffalo", "BBQ", "Honey BBQ", "Lemon Pepper", "Teriyaki"],
-    wingSauce: ["Ranch", "Blue Cheese"],
     burgerToppings: ["Lettuce", "Tomato", "Onion", "Pickle"],
-    cheeseTypes: ["Provolone", "American", "Cheddar", "Pepper Jack"],
     condiments: ["Ketchup", "Mustard", "Mayonnaise", "Relish", "Onion", "Hot Sauce", "BBQ Sauce", "Melted Cheddar"],
 };
         
@@ -102,7 +99,7 @@ export function menu() {
     new menuCategory("Pizza", "pizzaToppings","Available in slices (Cheese or Pepperoni), Small(12 in.), or Large(18 in.). Extra toppings $1.00 each");
     
     new menuCategory("Wings", "wingFlavors", "Available in bone-in or boneless, served with side of celery and choice of ranch or blue cheese dipping sauce");
-    new menuCategory("Burgers", "burgerToppings", "Served with choice of toppings and condiments on a brioche bun. Make it a double for $4.00 more");
+    new menuCategory("Burgers", "burgerToppings", "Served with choice of toppings and condiments on a brioche bun. Cheeseburgers made with American Cheese. Provolone and Cheddar available at request. Make it a double for $4.00 more");
     new menuCategory("French Fries", "null", "Salted Crispy Thin cut French Fries, available in regular or family sized portions");
     new menuCategory("Hot Dogs", "null", "Grilled Hot Dogs available in standard or foot long size, served with choice of condiments");
     new menuCategory("Snacks and Treats", "null", "Tasty snacks when you just need a bite to make it through");
@@ -132,7 +129,7 @@ export function menu() {
     new menuItem("Regular","5","French Fries");
     new menuItem("Family-Sized", "12", "French Fries");
 
-    new menuItem("Regular", "6", "Hot Dogs");
+    new menuItem("Hot Dog", "6", "Hot Dogs");
     new menuItem("Chili Dog", "7", "Hot Dogs");
     new menuItem("Footlong", "8", "Hot Dogs");
     new menuItem("Footlong Chili", "9", "Hot Dogs");

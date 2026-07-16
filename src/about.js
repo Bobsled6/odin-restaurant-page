@@ -26,6 +26,7 @@ export function aboutDiv() {
     content.appendChild(aboutDesc);
     contactDiv.appendChild(contactHeader);
     content.appendChild(contactDiv);
+    contactDiv.replaceChildren();
 
     
 

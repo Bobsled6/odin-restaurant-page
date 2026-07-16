@@ -101,7 +101,7 @@ class menuCategory {
         const catImageSrc = document.createElement("figcaption");
 
         catImage.src = images[nameString];
-        catImageSrc.innerHTML = images[nameString + 'Src'];
+        catImageSrc.innerHTML = "Photo by " + images[nameString + 'Src'];
         imageFigure.appendChild(catImage);
         imageFigure.appendChild(catImageSrc);
         menuCat.appendChild(imageFigure);
@@ -185,7 +185,4 @@ export function menu() {
     new menuItem("Beer", "4", "Beverages");
     new menuItem("Mixed Drinks", "6", "Beverages");
 
-    
-
-    
 }

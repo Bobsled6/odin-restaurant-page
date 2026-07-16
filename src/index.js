@@ -10,7 +10,6 @@ const aboutButton = document.getElementById("about");
 initLoad();
 
 
-
 homeButton.addEventListener("click", () => {
     content.replaceChildren();
     initLoad();

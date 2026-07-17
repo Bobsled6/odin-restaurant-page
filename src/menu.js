@@ -70,7 +70,7 @@ class menuItem {
 
 class menuCategory {
 
-    constructor(name,toppingsCat,options, description,) {
+    constructor(name,toppingsCat,options, description,subCat) {
         let nameString = name.toString();
         nameString = nameString.replaceAll(' ', '');
 
@@ -127,12 +127,18 @@ class menuCategory {
         itemListingDiv.classList.add("listingsDiv");
         menuCat.appendChild(itemListingDiv);
 
+        if (subCat === "yes") {
+            const subCatDiv = document.createElement("div");
+            subCatDiv.classList.add("subCatDiv");
+            subCatDiv.id = name + "subCatDiv";
+            menuCat.appendChild(subCatDiv);
+        }
         
 
     }
 
     static subCat(name, parentCat){
-        const parentCatDiv = document.getElementById(parentCat);
+        const subCatDiv = document.getElementById(parentCat + "subCatDiv");
         const subDiv = document.createElement("div");
         const subHeader = document.createElement("h3");
         const itemListingDiv = document.createElement("div");
@@ -145,17 +151,8 @@ class menuCategory {
         subHeader.innerHTML = name;
         subDiv.appendChild(subHeader);
         subDiv.appendChild(itemListingDiv);
+        subCatDiv.appendChild(subDiv);
 
-
-        let subMenuDiv = document.getElementById("sub" + parentCat);
-        if(subMenuDiv = "null") {
-            const subMenuDivConstruct = document.createElement("div");
-            subMenuDivConstruct.id = "sub" + parentCat;
-            subMenuDiv = subMenuDivConstruct;
-        }
-        
-        subMenuDiv.appendChild(subDiv);
-        parentCatDiv.appendChild(subMenuDiv);
     }
 }
 
@@ -171,9 +168,8 @@ export function menu() {
     menuHeader.innerHTML = "Menu";
     content.appendChild(menuHeader);
     
-    new menuCategory("Pizza", "pizzaToppings","Toppings", "Available in slices (Cheese or Pepperoni) or full pies with choice of toppings. Extra toppings $1.00 each");
-    
-    new menuCategory("Wings", "wingFlavors","Sauce", "Available in bone-in or boneless, served with side of celery and choice of ranch or blue cheese dipping sauce");
+    new menuCategory("Pizza", "pizzaToppings","Toppings", "Available in slices (Cheese or Pepperoni) or full pies with choice of toppings. Extra toppings $1.00 each", "null");
+    new menuCategory("Wings", "wingFlavors","Sauce", "Available in bone-in or boneless, served with side of celery and choice of ranch or blue cheese dipping sauce", "yes");
     new menuCategory("Burgers", "burgerToppings","Toppings", "Served with choice of toppings and condiments on a brioche bun. Cheeseburgers made with American Cheese. Provolone and Cheddar available at request. Make it a double for $4.00 more");
     new menuCategory("French Fries", "null","null", "Salted Crispy Thin cut French Fries, available in regular or family sized portions");
     new menuCategory("Hot Dogs", "null","null", "Grilled Hot Dogs available in standard or foot long size, served with choice of condiments");

@@ -158,7 +158,7 @@ ul {
     aspect-ratio: 1/1;
 }
 
-.subCat {
-    grid-row-start: 3;
-    grid-column-start: 2;
+#subWings {
+    display:flex;
+    grid-area: 3 / 1 / 3 / 2;
 }

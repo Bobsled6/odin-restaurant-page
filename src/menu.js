@@ -39,12 +39,11 @@ const images = {
 class menuItem {
     
     constructor (item,price,category) {
-        const menuItemDiv = document.createElement("div");
         const itemDiv = document.createElement("div");
         const priceDiv = document.createElement("div");
+        const menuItemDiv = document.createElement("div");
         const menuCat = document.getElementById(category);
-
-
+        const itemListingDiv = document.getElementById(category + "listingsDiv");
 
         this.item = item;
         this.price = price;
@@ -58,11 +57,10 @@ class menuItem {
         priceDiv.classList.add("price");
         priceDiv.innerHTML = '$' + price + ".00";
         
-        menuItemDiv.appendChild(itemDiv);
-        menuItemDiv.appendChild(priceDiv);
 
-        menuCat.appendChild(menuItemDiv);
-    
+        itemListingDiv.appendChild(itemDiv);
+        itemListingDiv.appendChild(priceDiv);
+
     };
 
     
@@ -70,7 +68,7 @@ class menuItem {
 
 class menuCategory {
 
-    constructor(name,toppingsCat, description) {
+    constructor(name,toppingsCat,options, description,) {
         let nameString = name.toString();
         nameString = nameString.replaceAll(' ', '');
 
@@ -80,10 +78,17 @@ class menuCategory {
 
         const menuCat = document.createElement("div");
         menuCat.id = (name);
+        menuCat.classList.add("menuCategory");
         
         const menuCatHead = document.createElement("h2");
         menuCatHead.innerHTML = name;
         menuCat.appendChild(menuCatHead);
+
+        const optionsHead = document.createElement("h3");
+        optionsHead.innerHTML = options;
+        if (options != "null") {
+            menuCat.appendChild(optionsHead);
+        }
 
         if(toppingsCat != "null"){
             const toppingList = document.createElement("ul");
@@ -106,8 +111,13 @@ class menuCategory {
         imageFigure.appendChild(catImageSrc);
         menuCat.appendChild(imageFigure);
     
-        menuCat.appendChild(descriptionP);
+        if(description != "null"){menuCat.appendChild(descriptionP)};
         content.appendChild(menuCat);
+        
+        const itemListingDiv = document.createElement("div");
+        itemListingDiv.id = name + "listingsDiv";
+        itemListingDiv.classList.add("listingsDiv");
+        menuCat.appendChild(itemListingDiv);
 
     }
 
@@ -115,11 +125,16 @@ class menuCategory {
         const parentCatDiv = document.getElementById(parentCat);
         const subDiv = document.createElement("div");
         const subHeader = document.createElement("h3");
+        const itemListingDiv = document.createElement("div");
+
+        itemListingDiv.id = name + "listingsDiv";
+        itemListingDiv.classList.add("listingsDiv");
 
         subDiv.classList.add("subCat");
         subDiv.id = name;
         subHeader.innerHTML = name;
         subDiv.appendChild(subHeader);
+        subDiv.appendChild(itemListingDiv);
         parentCatDiv.appendChild(subDiv);
     }
 }
@@ -136,15 +151,15 @@ export function menu() {
     menuHeader.innerHTML = "Menu";
     content.appendChild(menuHeader);
     
-    new menuCategory("Pizza", "pizzaToppings","Available in slices (Cheese or Pepperoni), Small(12 in.), or Large(18 in.). Extra toppings $1.00 each");
+    new menuCategory("Pizza", "pizzaToppings","Toppings", "Available in slices (Cheese or Pepperoni), Small(12 in.), or Large(18 in.). Extra toppings $1.00 each");
     
-    new menuCategory("Wings", "wingFlavors", "Available in bone-in or boneless, served with side of celery and choice of ranch or blue cheese dipping sauce");
-    new menuCategory("Burgers", "burgerToppings", "Served with choice of toppings and condiments on a brioche bun. Cheeseburgers made with American Cheese. Provolone and Cheddar available at request. Make it a double for $4.00 more");
-    new menuCategory("French Fries", "null", "Salted Crispy Thin cut French Fries, available in regular or family sized portions");
-    new menuCategory("Hot Dogs", "null", "Grilled Hot Dogs available in standard or foot long size, served with choice of condiments");
-    new menuCategory("Snacks and Treats", "null", "Tasty snacks when you just need a bite to make it through");
-    new menuCategory("Beverages","null","");
-    new menuCategory("Condiments", "condiments", "Free with purchase, Melted Cheddar limited to 1 serving per customer");
+    new menuCategory("Wings", "wingFlavors","Sauce", "Available in bone-in or boneless, served with side of celery and choice of ranch or blue cheese dipping sauce");
+    new menuCategory("Burgers", "burgerToppings","Toppings", "Served with choice of toppings and condiments on a brioche bun. Cheeseburgers made with American Cheese. Provolone and Cheddar available at request. Make it a double for $4.00 more");
+    new menuCategory("French Fries", "null","null", "Salted Crispy Thin cut French Fries, available in regular or family sized portions");
+    new menuCategory("Hot Dogs", "null","null", "Grilled Hot Dogs available in standard or foot long size, served with choice of condiments");
+    new menuCategory("Snacks and Treats", "null","null", "Tasty snacks when you just need a bite to make it through");
+    new menuCategory("Beverages","null","null","null");
+    new menuCategory("Condiments", "condiments","null", "Free with purchase, Melted Cheddar limited to 1 serving per customer");
 
     menuCategory.subCat("Classic Bone-In", "Wings");
     menuCategory.subCat("Boneless", "Wings");

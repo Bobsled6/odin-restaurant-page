@@ -82,3 +82,18 @@ figcaption {
     width: 50rem;
     height: 30rem;
 }
+
+.menuCategory {
+    display: grid;
+    grid-column-start: 1;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 10% 10% 4fr;
+}
+
+h2 {
+    grid-area: 1 / 1 / 3 / 1;
+}
+
+.description {
+    grid-area: 2 / 1 / 2 / 1;
+}

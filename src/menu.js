@@ -127,6 +127,8 @@ class menuCategory {
         itemListingDiv.classList.add("listingsDiv");
         menuCat.appendChild(itemListingDiv);
 
+        
+
     }
 
     static subCat(name, parentCat){
@@ -143,7 +145,17 @@ class menuCategory {
         subHeader.innerHTML = name;
         subDiv.appendChild(subHeader);
         subDiv.appendChild(itemListingDiv);
-        parentCatDiv.appendChild(subDiv);
+
+
+        let subMenuDiv = document.getElementById(name);
+        if(subMenuDiv = "null") {
+            const subMenuDivConstruct = document.createElement("div");
+            subMenuDivConstruct.id = name;
+            subMenuDiv = subMenuDivConstruct;
+        }
+        subMenuDiv.appendChild(subDiv);
+        
+        parentCatDiv.appendChild(subMenuDiv);
     }
 }
 

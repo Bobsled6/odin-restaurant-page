@@ -84,10 +84,14 @@ class menuCategory {
         menuCatHead.innerHTML = name;
         menuCat.appendChild(menuCatHead);
 
+        const optionsFig = document.createElement("figure");
+        optionsFig.classList.add("optionsFig");
+        menuCat.appendChild(optionsFig);
+
         const optionsHead = document.createElement("h3");
         optionsHead.innerHTML = options;
         if (options != "null") {
-            menuCat.appendChild(optionsHead);
+            optionsFig.appendChild(optionsHead);
         }
 
         if(toppingsCat != "null"){
@@ -96,7 +100,7 @@ class menuCategory {
                 let li = document.createElement("li");
                 li.innerHTML = item;
                 toppingList.appendChild(li);
-                menuCat.appendChild(toppingList);
+                optionsFig.appendChild(toppingList);
             })
         
         }
@@ -109,6 +113,7 @@ class menuCategory {
         catImageSrc.innerHTML = "Photo by " + images[nameString + 'Src'];
         imageFigure.appendChild(catImage);
         imageFigure.appendChild(catImageSrc);
+        imageFigure.classList.add("catImgFigure");
         menuCat.appendChild(imageFigure);
     
         if(description != "null"){menuCat.appendChild(descriptionP)};

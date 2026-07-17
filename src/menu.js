@@ -147,14 +147,14 @@ class menuCategory {
         subDiv.appendChild(itemListingDiv);
 
 
-        let subMenuDiv = document.getElementById(name);
+        let subMenuDiv = document.getElementById("sub" + parentCat);
         if(subMenuDiv = "null") {
             const subMenuDivConstruct = document.createElement("div");
-            subMenuDivConstruct.id = name;
+            subMenuDivConstruct.id = "sub" + parentCat;
             subMenuDiv = subMenuDivConstruct;
         }
-        subMenuDiv.appendChild(subDiv);
         
+        subMenuDiv.appendChild(subDiv);
         parentCatDiv.appendChild(subMenuDiv);
     }
 }

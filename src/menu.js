@@ -11,7 +11,7 @@ import SnacksAndTreats from "./images/SnacksAndTreats.jpg";
 
 
 const toppings = {
-    pizzaToppings: ["Pepperoni", "Ham", "Sausage", "Broccoli", "Green Pepper", "Red Pepper", "Banana Pepper", "Jalapeno Pepper", "Red Pepper","Green Olives", "Black Olives", "Onion", "Mushroom"],
+    pizzaToppings: ["Pepperoni", "Sausage", "Red Pepper", "Banana Pepper", "Green Olives", "Broccoli", "Ham","Onion","Green Pepper", "Jalapeno Pepper","Black Olives", "Mushroom"],
     wingFlavors: ["Hot Buffalo", "Mild Buffalo", "BBQ", "Honey BBQ", "Lemon Pepper", "Teriyaki"],
     burgerToppings: ["Lettuce", "Tomato", "Onion", "Pickle"],
     condiments: ["Ketchup", "Mustard", "Honey Mustard", "Mayonnaise", "Relish", "Onion", "Hot Sauce", "BBQ Sauce", "Salsa", "Melted Cheddar"],
@@ -57,9 +57,11 @@ class menuItem {
         priceDiv.classList.add("price");
         priceDiv.innerHTML = '$' + price + ".00";
         
+        menuItemDiv.appendChild(itemDiv);
+        menuItemDiv.appendChild(priceDiv);
 
-        itemListingDiv.appendChild(itemDiv);
-        itemListingDiv.appendChild(priceDiv);
+        itemListingDiv.classList.add("itemListingDiv");
+        itemListingDiv.appendChild(menuItemDiv);
 
     };
 
@@ -106,12 +108,13 @@ class menuCategory {
         }
 
         const imageFigure = document.createElement("figure");
-        const catImage = document.createElement("img");
+        const catImg = document.createElement("img");
         const catImageSrc = document.createElement("figcaption");
 
-        catImage.src = images[nameString];
+        catImg.src = images[nameString];
         catImageSrc.innerHTML = "Photo by " + images[nameString + 'Src'];
-        imageFigure.appendChild(catImage);
+        catImg.classList.add("catImg");
+        imageFigure.appendChild(catImg);
         imageFigure.appendChild(catImageSrc);
         imageFigure.classList.add("catImgFigure");
         menuCat.appendChild(imageFigure);
@@ -156,7 +159,7 @@ export function menu() {
     menuHeader.innerHTML = "Menu";
     content.appendChild(menuHeader);
     
-    new menuCategory("Pizza", "pizzaToppings","Toppings", "Available in slices (Cheese or Pepperoni), Small(12 in.), or Large(18 in.). Extra toppings $1.00 each");
+    new menuCategory("Pizza", "pizzaToppings","Toppings", "Available in slices (Cheese or Pepperoni) or full pies with choice of toppings. Extra toppings $1.00 each");
     
     new menuCategory("Wings", "wingFlavors","Sauce", "Available in bone-in or boneless, served with side of celery and choice of ranch or blue cheese dipping sauce");
     new menuCategory("Burgers", "burgerToppings","Toppings", "Served with choice of toppings and condiments on a brioche bun. Cheeseburgers made with American Cheese. Provolone and Cheddar available at request. Make it a double for $4.00 more");
@@ -170,8 +173,8 @@ export function menu() {
     menuCategory.subCat("Boneless", "Wings");
 
     new menuItem("Slice","2", "Pizza");
-    new menuItem("Small", "10", "Pizza");
-    new menuItem("Large","15", "Pizza");
+    new menuItem("Small (12 in.)", "10", "Pizza");
+    new menuItem("Large (18 in.)","15", "Pizza");
 
     new menuItem("6 Ct","12", "Classic Bone-In");
     new menuItem("12 Ct", "21", "Classic Bone-In");

@@ -84,26 +84,49 @@ class menuCategory {
         
         const menuCatHead = document.createElement("h2");
         menuCatHead.innerHTML = name;
+        menuCatHead.classList.add("menuCatHead");
         menuCat.appendChild(menuCatHead);
 
-        const optionsFig = document.createElement("figure");
-        optionsFig.classList.add("optionsFig");
-        menuCat.appendChild(optionsFig);
 
-        const optionsHead = document.createElement("h3");
-        optionsHead.innerHTML = options;
-        if (options != "null") {
-            optionsFig.appendChild(optionsHead);
-        }
-
-        if(toppingsCat != "null"){
+        if(options !== "null" ) {
+            const optionsFig = document.createElement("figure");
             const toppingList = document.createElement("ul");
-            toppings[toppingsCat].forEach((item) => {
+            const optionsHead = document.createElement("h3");
+            
+            optionsFig.classList.add("optionsFig");
+            optionsFig.id = name + "optionsFig";
+            
+          
+            optionsHead.innerHTML = options;
+            optionsFig.appendChild(optionsHead);
+
+
+           toppings[toppingsCat].forEach((item) => {
                 let li = document.createElement("li");
                 li.innerHTML = item;
                 toppingList.appendChild(li);
-                optionsFig.appendChild(toppingList);
             })
+
+            
+             optionsFig.appendChild(toppingList);
+             menuCat.appendChild(optionsFig);
+
+        }
+
+       
+
+        if(toppingsCat !== "null" && options === "null"){
+            const toppingList = document.createElement("ul");
+            const toppingCatDiv = document.createElement("div");
+
+           toppings[toppingsCat].forEach((item) => {
+                let li = document.createElement("li");
+                li.innerHTML = item;
+                toppingList.appendChild(li);
+            })
+            
+            toppingCatDiv.appendChild(toppingList);
+            menuCat.appendChild(toppingCatDiv);
         
         }
 
@@ -113,6 +136,7 @@ class menuCategory {
 
         catImg.src = images[nameString];
         catImageSrc.innerHTML = "Photo by " + images[nameString + 'Src'];
+        catImageSrc.classList.add("catImgCap");
         catImg.classList.add("catImg");
         imageFigure.appendChild(catImg);
         imageFigure.appendChild(catImageSrc);
@@ -149,6 +173,7 @@ class menuCategory {
         subDiv.classList.add("subCat");
         subDiv.id = name;
         subHeader.innerHTML = name;
+        subHeader.classList.add("subHeader");
         subDiv.appendChild(subHeader);
         subDiv.appendChild(itemListingDiv);
         subCatDiv.appendChild(subDiv);
@@ -168,7 +193,7 @@ export function menu() {
     menuHeader.innerHTML = "Menu";
     content.appendChild(menuHeader);
     
-    new menuCategory("Pizza", "pizzaToppings","Toppings", "Available in slices (Cheese or Pepperoni) or full pies with choice of toppings. Extra toppings $1.00 each", "null");
+    new menuCategory("Pizza", "pizzaToppings","Toppings", "Available in slices (Cheese or Pepperoni) or full pies with choice of toppings. Extra toppings $1.00 each");
     new menuCategory("Wings", "wingFlavors","Sauce", "Available in bone-in or boneless, served with side of celery and choice of ranch or blue cheese dipping sauce", "yes");
     new menuCategory("Burgers", "burgerToppings","Toppings", "Served with choice of toppings and condiments on a brioche bun. Cheeseburgers made with American Cheese. Provolone and Cheddar available at request. Make it a double for $4.00 more");
     new menuCategory("French Fries", "null","null", "Salted Crispy Thin cut French Fries, available in regular or family sized portions");

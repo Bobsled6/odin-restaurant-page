@@ -60,7 +60,6 @@ class menuItem {
         menuItemDiv.appendChild(itemDiv);
         menuItemDiv.appendChild(priceDiv);
 
-        itemListingDiv.classList.add("itemListingDiv");
         itemListingDiv.appendChild(menuItemDiv);
 
     };
@@ -107,17 +106,17 @@ class menuCategory {
                 toppingList.appendChild(li);
             })
 
-            
-             optionsFig.appendChild(toppingList);
-             menuCat.appendChild(optionsFig);
+            optionsFig.appendChild(toppingList);
+            menuCat.appendChild(optionsFig);
 
         }
 
-       
+        const imgFigure = document.createElement("figure");
 
         if(toppingsCat !== "null" && options === "null"){
             const toppingList = document.createElement("ul");
             const toppingCatDiv = document.createElement("div");
+            imgFigure.classList.add("imgFigureNoOpt");
 
            toppings[toppingsCat].forEach((item) => {
                 let li = document.createElement("li");
@@ -126,11 +125,11 @@ class menuCategory {
             })
             
             toppingCatDiv.appendChild(toppingList);
+            toppingCatDiv.classList.add("toppingCatNoItems")
             menuCat.appendChild(toppingCatDiv);
         
         }
 
-        const imageFigure = document.createElement("figure");
         const catImg = document.createElement("img");
         const catImageSrc = document.createElement("figcaption");
 
@@ -138,10 +137,10 @@ class menuCategory {
         catImageSrc.innerHTML = "Photo by " + images[nameString + 'Src'];
         catImageSrc.classList.add("catImgCap");
         catImg.classList.add("catImg");
-        imageFigure.appendChild(catImg);
-        imageFigure.appendChild(catImageSrc);
-        imageFigure.classList.add("catImgFigure");
-        menuCat.appendChild(imageFigure);
+        imgFigure.appendChild(catImg);
+        imgFigure.appendChild(catImageSrc);
+        imgFigure.classList.add("catImgFigure");
+        menuCat.appendChild(imgFigure);
     
         if(description != "null"){menuCat.appendChild(descriptionP)};
         content.appendChild(menuCat);
@@ -150,6 +149,10 @@ class menuCategory {
         itemListingDiv.id = name + "listingsDiv";
         itemListingDiv.classList.add("listingsDiv");
         menuCat.appendChild(itemListingDiv);
+        if(toppingsCat === "null" && options === "null") {
+            itemListingDiv.classList.add("itemDivNoOpt");
+            imgFigure.classList.add("imgFigureNoOpt");
+        }
 
         if (subCat === "yes") {
             const subCatDiv = document.createElement("div");
@@ -199,7 +202,7 @@ export function menu() {
     new menuCategory("French Fries", "null","null", "Salted Crispy Thin cut French Fries, available in regular or family sized portions");
     new menuCategory("Hot Dogs", "null","null", "Grilled Hot Dogs available in standard or foot long size, served with choice of condiments");
     new menuCategory("Snacks and Treats", "null","null", "Tasty snacks when you just need a bite to make it through");
-    new menuCategory("Beverages","null","null","null");
+    new menuCategory("Beverages","null","null","Ice Cold, served in glass. Lemon / Lime available at request.");
     new menuCategory("Condiments", "condiments","null", "Free with purchase, Melted Cheddar limited to 1 serving per customer");
 
     menuCategory.subCat("Classic Bone-In", "Wings");
@@ -236,7 +239,7 @@ export function menu() {
     new menuItem("Nachos w/ Cheese or Salsa", "5", "Snacks and Treats");
     new menuItem("Beef Nachos w/ Cheese or Salsa", "6", "Snacks and Treats");
 
-    new menuItem("Ice Water w/ optional Lemon", "0", "Beverages");
+    new menuItem(" Ice Water", "0", "Beverages");
     new menuItem("Soda", "2", "Beverages");
     new menuItem("Beer", "4", "Beverages");
     new menuItem("Mixed Drinks", "6", "Beverages");

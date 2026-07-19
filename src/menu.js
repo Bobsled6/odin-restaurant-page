@@ -194,14 +194,11 @@ export function menu() {
     const condDiv = document.createElement("div");
     const condHead = document.createElement("h2")
     const condList = document.createElement("ul");
-    const menuHeader = document.createElement("h1");
 
     homeButton.style.boxShadow = "none";
     menuButton.style.boxShadow = "inset 0px 0px 50px 0px #29CFFF, 0px 26px 9px -7px #185370";
     aboutButton.style.boxShadow = "none";
 
-    menuHeader.innerHTML = "Menu";
-    content.appendChild(menuHeader);
     
     new menuCategory("Pizza", "pizzaToppings","Toppings", "Available in slices (Cheese or Pepperoni) or full pies with choice of toppings. Extra toppings $1.00 each");
     new menuCategory("Wings", "wingFlavors","Sauce", "Available in bone-in or boneless, served with side of celery and choice of ranch or blue cheese dipping sauce", "yes");

@@ -1,4 +1,7 @@
 const content = document.getElementById("content");
+const homeButton = document.getElementById("home");
+const menuButton = document.getElementById("menu");
+const aboutButton = document.getElementById("about");
 import Pizza from "./images/Pizza.jpg";
 import Wings from "./images/Wings.jpg";
 import Burgers from "./images/Burgers.jpg";
@@ -192,6 +195,10 @@ export function menu() {
     const condHead = document.createElement("h2")
     const condList = document.createElement("ul");
     const menuHeader = document.createElement("h1");
+
+    homeButton.style.boxShadow = "none";
+    menuButton.style.boxShadow = "inset 0px 0px 50px 0px #29CFFF, 0px 26px 9px -7px #185370";
+    aboutButton.style.boxShadow = "none";
 
     menuHeader.innerHTML = "Menu";
     content.appendChild(menuHeader);

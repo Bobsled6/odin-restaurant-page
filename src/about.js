@@ -1,5 +1,8 @@
 const content = document.getElementById("content");
 const contactDiv = document.createElement("div");
+const homeButton = document.getElementById("home");
+const menuButton = document.getElementById("menu");
+const aboutButton = document.getElementById("about");
 
 class contactPair {
     constructor(key,value) {
@@ -17,6 +20,9 @@ export function aboutDiv() {
     const aboutDesc = document.createElement("p");
     const contactHeader = document.createElement("h2");
     
+    homeButton.style.boxShadow = "none";
+    menuButton.style.boxShadow = "none";
+    aboutButton.style.boxShadow = "inset 0px 0px 50px 0px #29CFFF, 0px 26px 9px -7px #185370";
 
     aboutHeader.innerHTML = "About Us";
     contactHeader.innerHTML = "Contact Us";

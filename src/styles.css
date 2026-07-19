@@ -226,3 +226,11 @@ ul {
 .imgFigureNoOpt {
     grid-column-end: 4;
 }
+
+#aboutDesc {
+    margin-left: 20rem;
+    margin-right: 20rem;
+    text-align: center;
+}
+
+

@@ -27,10 +27,13 @@ export function aboutDiv() {
     aboutHeader.innerHTML = "About Us";
     contactHeader.innerHTML = "Contact Us";
     aboutDesc.innerHTML = "Family owned since 1973. Ballbark Bar and Grill has continued to strive to serve the community and remain a positive place for the whole family."
+    aboutDesc.id = "aboutDesc";
+
+    contactDiv.id = "contactDiv";
     
     content.appendChild(aboutHeader);
     content.appendChild(aboutDesc);
-    contactDiv.appendChild(contactHeader);
+    content.appendChild(contactHeader);
     content.appendChild(contactDiv);
     contactDiv.replaceChildren();
 
